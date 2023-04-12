@@ -80,9 +80,19 @@ p {
   box-sizing:         border-box;
 }
 
-/* ユーザー情報テーブル */
+/* error_messages */
 
-.user-table {
-  vertical-align: middle;
-  text-align: center;
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }
