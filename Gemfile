@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
 gem 'rinku'
 gem 'rails',        '~> 5.1.6'
 gem 'rails-i18n'
