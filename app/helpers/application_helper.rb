@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # module ApplicationHelper
 
 #   # ページごとにタイトルを返す
@@ -17,10 +19,10 @@
 #   end
 # end
 
+# ytytut
 module ApplicationHelper
-  def full_title(page_name = "")
-    base_title = "AttendanceApp"
+  def full_title(page_name = '')
+    base_title = 'AttendanceApp'
     page_name.empty? ? base_title : "#{page_name} | #{base_title}"
   end
 end
-

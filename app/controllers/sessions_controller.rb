@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # class SessionsController < ApplicationController
 
 #   def new
@@ -23,10 +25,9 @@
 #   end
 # end
 
+# jhkhk
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)

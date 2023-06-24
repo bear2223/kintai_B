@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# kj
 class CreateAttendances < ActiveRecord::Migration[5.1]
   def change
     create_table :attendances do |t|
