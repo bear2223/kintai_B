@@ -100,5 +100,13 @@ p {
 /* モーダルウインドウの位置調整 */
 
 .modal-dialog-center {
-  padding-top: 10%;
+  padding-top: 5%;
+  width: 90vw;
+  height: 100vh;
 }
+
+// views/users/edit_basic_info.html.erb
+
+// .btn-signup {
+//   margin-top: 10px;
+// }

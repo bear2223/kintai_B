@@ -3,9 +3,9 @@
 # Controlador para gestionar acciones relacionadas con usuarios
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy edit_basic_info update_basic_info]
-  before_action :logged_in_user, only: %i[index edit update destroy edit_basic_info update_basic_info]
+  before_action :logged_in_user, only: %i[index edit update destroy update_basic_info]
   before_action :correct_user, only: %i[edit update]
-  before_action :admin_user, only: %i[destroy edit_basic_info update_basic_info]
+  before_action :admin_user, only: %i[destroy update_basic_info]
   before_action :set_one_month, only: :show
 
   def index
@@ -66,6 +66,6 @@ class UsersController < ApplicationController
   end
 
   def basic_info_params
-    params.require(:user).permit(:department, :basic_time, :work_time)
+    params.require(:user).permit(:basic_time, :work_time)
   end
 end
