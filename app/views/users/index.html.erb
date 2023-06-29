@@ -20,7 +20,7 @@
       <tr>
         <td>
           <% if current_user.admin? %>
-            <%= link_to user.name, user %>
+            <%= link_to user.name, show_path(user) %>
           <% else %>
             <%= user.name %>
           <% end %>

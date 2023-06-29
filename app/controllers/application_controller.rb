@@ -13,11 +13,7 @@ class ApplicationController < ActionController::Base
 
   # paramsハッシュからユーザーを取得します。
   def set_user
-    if params[:id]
-      @user = User.find(params[:id])
-    else  
-      @user = User.find(current_user.id)
-    end
+    @user = User.find(params[:id] || current_user.id)
   end
 
   # ログイン済みのユーザーか確認します。

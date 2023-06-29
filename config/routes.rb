@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   get '/signup', to: 'users#new'
   get '/user', to: 'users#edit_basic_info'
+  get 'users/:id', to: 'users#show', as: :show
 
   # ログイン機能
   get    '/login', to: 'sessions#new'
