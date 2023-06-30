@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   def update_basic_info
     User.find_each do |user|
       if user.update(basic_info_params)
-        flash[:success] = "#{user.name}の基本情報を更新しました。"
+        flash[:success] = "基本情報を更新しました。"
       else
-        flash[:danger] = "#{user.name}の更新は失敗しました。<br>" + user.errors.full_messages.join('<br>')
+        flash[:danger] = "更新は失敗しました。<br>" + user.errors.full_messages.join('<br>')
       end
     end
     redirect_to users_url
