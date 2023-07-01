@@ -70,7 +70,7 @@ class AttendancesController < ApplicationController
     elsif @attendance.finished_at.nil?
       update_attendance(:finished_at, 'お疲れ様でした。')
     end
-    redirect_to show_path
+    redirect_to show_path(id: params[:user_id])
   end
 
   def edit_one_month; end
