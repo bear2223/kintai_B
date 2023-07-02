@@ -70,7 +70,7 @@ class AttendancesController < ApplicationController
     elsif @attendance.finished_at.nil?
       update_attendance(:finished_at, 'お疲れ様でした。')
     end
-    redirect_to show_path(id: params[:user_id])
+    redirect_to user_path(id: params[:user_id])
   end
 
   def edit_one_month; end
@@ -83,7 +83,7 @@ class AttendancesController < ApplicationController
       end
     end
     flash[:success] = '1ヶ月分の勤怠情報を更新しました。'
-    redirect_to show_path(date: params[:date])
+    redirect_to user_path(date: params[:date])
   rescue ActiveRecord::RecordInvalid
     flash[:danger] = '無効な入力データがあった為、更新をキャンセルしました。'
     redirect_to attendances_edit_one_month_user_url(date: params[:date])

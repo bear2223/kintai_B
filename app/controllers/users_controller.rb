@@ -2,7 +2,7 @@
 
 # Controlador para gestionar acciones relacionadas con usuarios
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy edit_basic_info update_basic_info]
+  before_action :set_user, only: %i[show edit update destroy update_basic_info]
   before_action :logged_in_user, only: %i[index edit update destroy update_basic_info]
   before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: %i[destroy update_basic_info]
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = '新規作成に成功しました。'
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render :new
     end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = 'ユーザー情報を更新しました。'
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   def update_basic_info
     User.find_each do |user|
       if user.update(basic_info_params)
-        flash[:success] = "基本情報を更新しました。"
+        flash[:success] = '基本情報を更新しました。'
       else
-        flash[:danger] = "更新は失敗しました。<br>" + user.errors.full_messages.join('<br>')
+        flash[:danger] = "更新は失敗しました。<br>#{user.errors.full_messages.join('<br>')}"
       end
     end
     redirect_to users_url
