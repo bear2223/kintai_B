@@ -464,3 +464,17 @@ class Attendance < ApplicationRecord
   end
 end
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+models/attendance.rb
+
+if started_at_changed? && !finished_at_changed?
+  errors.add(:finished_at, 'と出勤時間を入力してください。')
+elsif finished_at_changed? && !started_at_changed?
+  errors.add(:started_at, 'と退勤時間を入力してください。')
+end
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+def only_started_at_or_only_finished_at_is_invalid
+    unless started_at_changed? && finished_at_changed? 
+      errors.add(:started_at, 'と退勤時間を入力してください。') if started_at.present? || finished_at.present?
+    end
+end
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
