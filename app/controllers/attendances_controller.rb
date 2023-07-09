@@ -80,7 +80,7 @@ class AttendancesController < ApplicationController
       attendances_params.each do |id, item|
         attendance = Attendance.find(id)
         attendance.assign_attributes(item)
-        attendance.save(context: :editt)
+        attendance.save!(context: :editt)
       end
     end
     flash[:success] = '1ヶ月分の勤怠情報を更新しました。'
@@ -89,7 +89,7 @@ class AttendancesController < ApplicationController
     flash[:danger] = '無効な入力データがあった為、更新をキャンセルしました。'
     redirect_to attendances_edit_one_month_user_url(date: params[:date])
   end
-  
+    
   private
 
   def attendances_params
