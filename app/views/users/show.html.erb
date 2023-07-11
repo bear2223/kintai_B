@@ -43,7 +43,9 @@
       <% @attendances.each do |day| %>
         <tr>
           <td><%= l(day.worked_on, format: :short) %></td>
-          <td><%= ApplicationController::DAYS_OF_THE_WEEK[day.worked_on.wday] %></td>
+          <td class="<%= ApplicationController::CSS_CLASSES_OF_THE_WEEK[day.worked_on.wday] %>">
+            <%= ApplicationController::DAYS_OF_THE_WEEK[day.worked_on.wday] %>
+          </td>
           <td>
             <% if btn_text = attendance_state(day) %>
               <%= link_to "#{btn_text}登録", user_attendance_path(@user, day), method: :patch, class: "btn btn-info btn-attendance" %>

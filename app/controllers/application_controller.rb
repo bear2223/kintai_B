@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # $days_of_the_week = %w[日 月 火 水 木 金 土]
 
   DAYS_OF_THE_WEEK = %w[日 月 火 水 木 金 土].freeze
+  CSS_CLASSES_OF_THE_WEEK = %w[sun mon tue wed thu fri sat].freeze
 
   # beforフィルター
 
