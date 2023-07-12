@@ -478,3 +478,24 @@ def only_started_at_or_only_finished_at_is_invalid
     end
 end
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+users/search_name.html.erb
+
+<% provide(:title, 'Names') %>
+<h1>検索結果</h1>
+
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-users">
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <% if current_user.admin? %>
+            <%= link_to user.name, user_path(user) %>
+          <% else %>
+            <%= user.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
