@@ -193,4 +193,17 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def round_to_quarter(minutes)
+    case minutes
+    when 0..14
+      0
+    when 15..29
+      15
+    when 30..44
+      30
+    else
+      45
+    end
+  end
 end

@@ -51,13 +51,25 @@
               <%= link_to "#{btn_text}登録", user_attendance_path(@user, day), method: :patch, class: "btn btn-info btn-attendance" %>
             <% end %>
           </td>
-          <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
           <td>
-              <% if day.started_at.present? && day.finished_at.present? %>
-                <%= str_times = working_times(day.started_at, day.finished_at) %>
-                <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
-              <% end %>
+            <% if day.started_at.present? %>
+              <%= day.started_at.strftime("%H") + ":" + 
+              round_to_quarter(day.started_at.min).to_s.rjust(2, '0') %>
+            <% end %>
+          </td>
+          <td>
+            <% if day.finished_at.present? %>
+              <%= day.finished_at.strftime("%H") + ":" + 
+              round_to_quarter(day.finished_at.min).to_s.rjust(2, '0') %>
+            <% end %>
+          </td>
+          <td>
+            <% if day.started_at.present? && day.finished_at.present? %>
+              <% rounded_started_at = day.started_at.change(min: round_to_quarter(day.started_at.min)) %>
+              <% rounded_finished_at = day.finished_at.change(min: round_to_quarter(day.finished_at.min)) %>
+              <%= str_times = working_times(rounded_started_at, rounded_finished_at) %>
+              <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
+            <% end %>
           </td>
           <td><%= day.note %></td>
         </tr>
