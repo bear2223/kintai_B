@@ -21,9 +21,6 @@
   </table>
 </div>
 <div class="btn-users-show">
-  <!--<%= link_to "⇦ 前月へ", edit_basic_info_user_path(date: @first_day.prev_month), class: "btn btn-info" %>-->
-  <!--<%= link_to "1ヶ月の勤怠編集へ", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-success" %>-->
-  <!--<%= link_to "次月へ ⇨", edit_basic_info_user_path(date: @first_day.next_month), class: "btn btn-info" %>-->
   <%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-info" %>
 </div>
 <div>
@@ -77,13 +74,6 @@
     </tbody>
     
     <tfoot>
-      <!--rowspan:縦結合、colspan：横結合-->
-      <!--<tr>-->
-      <!--  <td colspan="2">累計日数</td>-->
-      <!--  <td colspan="2">総合勤務時間</td>-->
-      <!--  <td colspan="2">累計在社時間</td>-->
-      <!--  <td rowspan="2"></td>-->
-      <!--</tr>-->
       <tr>
         <td colspan="2"><%= format_basic_info(@user.work_time).to_f * @worked_sum %></td>
         <td colspan="2"></td>
