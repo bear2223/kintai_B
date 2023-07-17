@@ -20,7 +20,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 # gem 'will_paginate'
-gem 'will_paginate', '3.1.7'
+gem 'will_paginate', '3.3.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
