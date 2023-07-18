@@ -545,3 +545,44 @@ end
 # Mac環境でもこのままでOKです
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+kintai_B/db/migrate/20230422102442_add_basic_info_to_users.b
+
+# hjg
+class AddBasicInfoToUsers < ActiveRecord::Migration[5.1]
+  def up
+    add_column :users, :basic_time, :datetime, default: -> { Time.current.change(hour: 8, min: 0, sec: 0) }
+    add_column :users, :work_time, :datetime, default: -> { Time.current.change(hour: 7, min: 30, sec: 0) }
+  end
+
+  def down
+    remove_column :users, :basic_time
+    remove_column :users, :work_time
+  end
+end
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+add_column :users, :basic_time, :datetime, default: '08:00:00'
+add_column :users, :work_time, :datetime, default: '07:30:00'
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ec2-user:~/environment/kintai_B (main) $ heroku run rails db:migrate
+Running rails db:migrate on ⬢ still-caverns-50336... up, run.3633 (Basic)
+W, [2023-07-18T07:53:27.781332 #2]  WARN -- : DEPRECATION WARNING: set the
+'will_paginate.previous_label' key in your i18n locale instead of editing
+pagination_options (called from /app/config/environment.rb:10:in `<top (required)>')
+W, [2023-07-18T07:53:27.781416 #2]  WARN -- : DEPRECATION WARNING: 
+set the 'will_paginate.next_label' key in your i18n locale instead
+of editing pagination_options (called from /app/config/environment.rb:11:in
+`<top (required)>')
+D, [2023-07-18T07:53:27.967514 #2] DEBUG -- :    (1.1ms)  SELECT 
+pg_try_advisory_lock(1275668337002713080)
+D, [2023-07-18T07:53:27.981124 #2] DEBUG -- :    (1.6ms)  SELECT 
+"schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+I, [2023-07-18T07:53:27.982117 #2]  INFO -- : Migrating to AddBasicInfoToUsers (20230422102442)
+D, [2023-07-18T07:53:27.984457 #2] DEBUG -- :    (1.0ms)  BEGIN
+== 20230422102442 AddBasicInfoToUsers: migrating ==============================
+D, [2023-07-18T07:53:27.981124 #2] DEBUG -- :    (1.6ms)  SELECT
+"schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+I, [2023-07-18T07:53:27.982117 #2]  INFO -- : Migrating to AddBasicInfoToUsers (20230422102442)
+D, [2023-07-18T07:53:27.984457 #2] DEBUG -- :    (1.0ms)  BEGIN
+== 20230422102442 AddBasicInfoToUsers: migrating ==============================
+: ALTER TABLE "users" ADD "basic_time" timestamp DEFAULT 2023-07-18 08:00:00 +0900
+
