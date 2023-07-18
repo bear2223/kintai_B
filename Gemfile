@@ -2,9 +2,10 @@
 
 source 'https://rubygems.org'
 gem 'bcrypt'
-ruby '2.6.9'
+ruby '2.7.6'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
+# gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
@@ -19,6 +20,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+# gem 'will_paginate'
 gem 'will_paginate', '3.3.1'
 
 group :development, :test do

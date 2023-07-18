@@ -504,6 +504,7 @@ kintai_B/Gemfile
 
 source 'https://rubygems.org'
 gem 'bcrypt'
+ruby '2.7.6'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 # gem 'bootstrap-will_paginate', '~> 1.0'
